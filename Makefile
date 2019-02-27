@@ -15,6 +15,11 @@ lint:
 	@mix credo
 .PHONY: lint
 
+docker-push:
+	@echo "Pushing docker images"
+	@docker push $(DOCKER_ID_USER)/$(APP_NAME)
+.PHONY: docker-push
+
 deps: ## Load all required deps for project
 	@mix do deps.get, deps.compile
 .PHONY: deps
