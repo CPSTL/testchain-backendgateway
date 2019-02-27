@@ -1,3 +1,4 @@
+language: generic
 after_success:
   - |
     if [ "$TRAVIS_BRANCH" == "to-457-docker-ci" ]; then # replace branch with master
