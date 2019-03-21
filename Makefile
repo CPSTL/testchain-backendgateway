@@ -1,7 +1,6 @@
 APP_NAME ?= testchain_backendgateway
 APP_VSN ?= 0.1.0
 BUILD ?= `git rev-parse --short HEAD`
-ALPINE_VERSION ?= edge
 DOCKER_ID_USER ?= makerdao
 MIX_ENV ?= prod
 
@@ -26,7 +25,6 @@ deps: ## Load all required deps for project
 
 build: ## Build elixir application with testchain and WS API
 	@docker build \
-		--build-arg ALPINE_VERSION=$(ALPINE_VERSION) \
 		--build-arg APP_NAME=$(APP_NAME) \
     --build-arg APP_VSN=$(APP_VSN) \
     --build-arg MIX_ENV=$(MIX_ENV) \

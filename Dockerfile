@@ -1,7 +1,4 @@
-# The version of Alpine to use for the final image
-ARG ALPINE_VERSION=edge
-
-FROM alpine:${ALPINE_VERSION} AS builder
+FROM makerdao/docker-base-alpine:latest AS builder
 
 # The following are build arguments used to change variable parts of the image.
 # The name of your application/release (required)
@@ -19,14 +16,10 @@ ENV APP_NAME=${APP_NAME} \
 WORKDIR /opt/app
 
 # This step installs all the build tools we'll need
-RUN apk update && \
-  apk upgrade --no-cache && \
-  apk add --no-cache \
+RUN apk add --no-cache \
     erlang \
     erlang-runtime-tools \
     elixir \
-    git \
-    bash \
     build-base && \
   mix local.rebar --force && \
   mix local.hex --force
@@ -56,7 +49,7 @@ RUN \
 # Running container
 #
 #######
-FROM alpine:${ALPINE_VERSION}
+FROM makerdao/docker-base-alpine:latest
 
 # The name of your application/release (required)
 ARG APP_NAME=${APP_NAME}
@@ -68,9 +61,7 @@ EXPOSE ${PORT}
 
 WORKDIR /opt/app
 
-RUN apk update && \
-    apk add --no-cache \
-      bash \
+RUN apk add --no-cache \
       openssl
 
 ENV REPLACE_OS_VARS=true \
