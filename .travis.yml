@@ -1,8 +1,12 @@
 language: generic
 after_success:
-  - |
-    if [ "$TRAVIS_BRANCH" == "master" ]; then
-      echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-      make build;
-      make docker-push;
-    fi
+- |
+  if [ "$TRAVIS_BRANCH" == "master" ]; then
+    echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+    make build;
+    make docker-push;
+  fi
+env:
+  global:
+  - secure: 0Ao6D+Gn9Fxmj6k6RvIPy8hi+tvbJR2C2RW5+waAfDO+LohUZRfnSaZCA4MTtcVKlawzCp46Q3fq2mSOYfT5AXJnBlUY9M4UFlbWcGTVFothE8roNqGkWLmlyBVkr7Papl4LSZK+inCVFivw0sjHJlPWNeRfTv0545QbL16/ePkFbsOwb7Ki8Esla4vgkG3oqL13EZwwRn6IpYVjvJQp8kRxO73pUbjpr2i39luQw56bFZkaU2Z7Mj/mb+I3pwxuYE9YoEQWbpHw2J8afUYB1ZF1hKCZUM/HSPNP/ByF5REzplev5qBjAtdNAtKVu6qNzYNFAVaBxjAk2RRuF0wASFLo+kFwNsuoOYcuTU9S1b2h8kqOI6Su9b4Bwt1NmfwWYm+eJ5NWL/CvY2yg+haQV1LLAgJJOa+molhxhEpcKzgTF9Z+KSuxxwl5zInS0Ro5Z+wMAcFKRD4TualtNEZdkBLX/bJluZoDJS1x33IJZAuqcC13x3Ce86JSbMr3Q7+z+DFSDgxGvMp4kH6BXM4jGOHfOv1R8s0Yo1ULlYczYXwiNZxZ0gXYTgXMQSDFaZcKaKutSY9Ykp61rROYzC87PD+sER2JjeZkng3V8rI+yisa2xQZabEZSrhATkRuQxyIuT3YsuZjY+LONiwSqM4TFP9GdXNp0ARu71yTsme0s2o=
+  - secure: zrhWPOsH2m2Urbbk4xJTI1lHmwPGRRms1ekv2V7x56GOfe8CCm+jqHH6GXpI9gXyvkzl0Fhye5FyBQnNN5X65bdr+c31lU/epm9iFRfFFHcO1jZ3ff9HqUviv6zE79N1kkajmXelKfQKmIXLx8JaZTMLv3LUe4FIqPGoeEXA+sH1zw8FY5S7FsfJXAXpoQP5SlLbVTf0tQKlBsEiwaBuf5L4lqwu5+RaiazlgWDMF5Aqaei4h9JFqQetXVGeLU8dXChWshVSziLFMBSjYsMmG+/19wD37O7g+wC8/2YvHxeb7m0DKo7rLSCR/dLDUnAZF4rT9TyqmaFm4JOIZwBpnntk+I1DFUDb/iYgb4ZV2okqcJTSAYn07qbVPDTDdpNjlqMBifPR+7hf6pxPIL5VYjAqkEGQhsplkvtu3QJw8cxy5Lf71JC6qm0pNWxIdSiOL4h8obww//xa9Jfc79SM/pRXy8Z1DCTN7LlM4zad//orSuGbHOytKs7ax0qEllqhy0Q93/WengNAqhaApVNdaQ8XKAXFl2Ug8vfLwZpUV/lZsg4IirT6rpNwfj3Z6zPul48DkppuldwbCl3V3OTIiMCpb6Mz7CeP2lGjp3T7e3U4YygbdF9qfe6yfo6XTeJa4JirTGIvTtG82lU0eOpsLNNtF6URHdBqdHAbOT/6SZM=
